@@ -8,7 +8,7 @@ var exphbs = require('express-handlebars'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     cheerio = require('cheerio');
-    mongoose = require('mongoose');
+    db = require('./config/connection');
 
 //SET HANDLEBARS ENGINE
 app.engine('handlebars', exphbs({
@@ -31,3 +31,8 @@ app.use('/public', express.static(__dirname + "/public"));
 app.listen(PORT, function() {
   console.log("Listening on PORT %s", PORT);
 });
+
+
+// Routing
+var routes = require('./controllers/router');
+app.use('/', routes);
