@@ -1,10 +1,15 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express'),
+  router = express.Router(),
+  mongoose = require('mongoose'),
+  news = require('../models/newsmodel');
 
 //get routes
 router.get('/', function(req, res) {
-  res.render('index', {
-    title: 'Welcome to High Times',
+  mongoose.model('news').find(function(err, news) {
+    res.render('index', {
+      title: 'Welcome to High Times',
+      news: news
+    });
   });
 });
 

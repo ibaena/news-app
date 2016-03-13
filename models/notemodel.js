@@ -1,14 +1,14 @@
-//SET MODEL FOR USER INPUT
+//DEPENDENCIES
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+Schema = mongoose.Schema;
 
 //SCHEMA
 var NoteSchema = new Schema({
   title: {
-    type:String
+    type: String
   },
   body: {
-    type:String
+    type: String
   }
 });
 

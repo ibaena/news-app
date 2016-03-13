@@ -7,7 +7,7 @@ var PORT = process.env.PORT || 8000;
 var exphbs = require('express-handlebars'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
-    cheerio = require('cheerio');
+    scraper = require('./config/scraper');
     db = require('./config/connection');
 
 //SET HANDLEBARS ENGINE
