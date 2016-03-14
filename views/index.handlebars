@@ -3,15 +3,17 @@
   <div class="col-md-4 news">
     <div class="list-group">
       {{#each news}}
-        <button type="button" class="list-group-item">
-          <h3>{{this.title}}</h3>
-          <br />
-          <h4>{{this.summary}}</h4>
-          <br />
-          <h5>{{this.author}}</h5>
-          <br />
-          <p>{{this.date}}</p>
-        </button>
+        <form action="/comments" method="POST">
+          <button type="submit" class="list-group-item" name="_id" value="{{this._id}}">
+            <h3>{{this.title}}</h3>
+            <br />
+            <h4>{{this.summary}}</h4>
+            <br />
+            <h5>{{this.author}}</h5>
+            <br />
+            <p>{{this.date}}</p>
+          </button>
+        </form>
 
         <button type="button" class="btn btn-default btn-lrg  btn-block" data-toggle="modal" data-target="#{{this._id}}">Comment</button>
         <div class="modal fade" id="{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -22,7 +24,7 @@
                 <h4 class="modal-title" id="myModalLabel">Post Comment: {{this.title}}</h4>
               </div>
               <div class="modal-body">
-                <form action="/comment" method="POST">
+                <form action="/post" method="POST">
                   <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" id="title" placeholder="Title" name="title">
@@ -57,9 +59,11 @@
     <!--SAVED INPUT -->
     <form action="/delete" method="POST">
       <ul class="list-group">
-        {{#each news}}
-        <li class="list-group-item">
-          {{this.body}}
+        {{#each comments}}
+          <li class="list-group-item">
+            {{this.title}}<br />
+            {{this.body}}<br />
+            {{this.user}}
           </li>
         {{/each}}
       </ul>
