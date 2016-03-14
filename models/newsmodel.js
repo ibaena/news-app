@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var newsSchema = new Schema({
   title: String,
   summary: String,
-  link: String,
+  author: String,
   date: {
     type: Date,
     default: Date.now

@@ -4,34 +4,40 @@ var request = require('request'),
   News = require('../models/newsmodel.js');
 
 
-request('https://news.ycombinator.com/', function(error, response, body) {
+request('http://www.nytimes.com/section/science?module=SectionsNav&action=click&version=BrowseTree&region=TopBar&contentCollection=Science&pgtype=Homepage', function(error, response, body) {
   if (!error && response.statusCode == 200) {
 
     $ = cheerio.load(body);
+    title = $(".story-meta");
 
-    $('.title').each(function(i, element) {
+    title.each(function(i, element) {
+      console.log(element);
 
-      var title = $(this).children("a").text();
-      var summary = $(this).children("a").text();
-      var link = $(this).children("a").attr("href");
+      var title = $(this).children('h2').text(),
+        summary = $(this).children('.summary').text(),
+        author = $(this).children('.byline').text();
 
-      if (title && link) {
+      
+      if (title) {
         var newNews = News({
           title: title,
-          link: link
+          summary: summary,
+          author: author
+
         });
         newNews.save({
           title: title,
           summary: summary,
-          link: link
+          author: author
         }, function(err, saved) {
           if (err) {
             console.log(err);
           } else {
-            //console.log(saved);
+            console.log(saved);
           }
         });
       }
+      return i < 10;
     });
   }
 });
