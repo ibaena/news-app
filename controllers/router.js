@@ -15,8 +15,7 @@ router.get('/', function(req, res) {
 });
 
 //GET COMMENTS PER ARTICLE
-router.post('/comments', function(req, res) {
-  console.log(req.body);
+router.post('/comments/:name', function(req, res) {
 
   comments.find({
     newsId: req.body._id

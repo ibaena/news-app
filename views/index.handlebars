@@ -2,8 +2,9 @@
 
   <div class="col-md-4 news">
     <div class="list-group">
+      <h3>News</h3>
       {{#each news}}
-        <form action="/comments" method="POST">
+        <form action="/comments/{{this._id}}" method="POST">
           <button type="submit" class="list-group-item" name="_id" value="{{this._id}}">
             <h3>{{this.title}}</h3>
             <br />
@@ -30,7 +31,7 @@
                     <input type="text" class="form-control" id="title" placeholder="Title" name="title">
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control" rows="20" name="body"></textarea>
+                    <textarea class="form-control" rows="10" name="body"></textarea>
                   </div>
                   <div class="form-group">
                     <label for="user">User</label>
@@ -54,17 +55,21 @@
 
 
 
-  <div class="col-md-4">
+  <div class="col-md-8">
     <h3>Comments</h3>
     <!--SAVED INPUT -->
     <form action="/delete" method="POST">
       <ul class="list-group">
         {{#each comments}}
           <li class="list-group-item">
-            {{this.title}}<br />
-            {{this.body}}<br />
-            {{this.user}}
+                <img src="http://placehold.it/100x100" alt="..." class="img-rounded">
+            <p>
+              <span class="title">{{this.title}}</span>
+              <br />
+              <span class="summary">{{this.body}}</span></p>
+            <p class="date">By: <span class="style">{{this.user}}</span> on:<span class="style"> {{this.date}}</span></p>
           </li>
+          <hr />
         {{/each}}
       </ul>
     </form>

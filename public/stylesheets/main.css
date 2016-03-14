@@ -1,1 +1,29 @@
 
+.title{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.summary{
+  font-weight: 300;
+  font size: 12px;
+}
+
+span{
+  padding-top: : 20px;
+}
+
+.style{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.img-rounded{
+  float: right;
+  max-width:50px;
+  max-height:100%;
+}
+
+.title, .summary, .date {
+
+}
