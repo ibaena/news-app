@@ -1,15 +1,48 @@
 <div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <ul>
+  <div class="col-md-4">
+    <!--USER INPUT -->
+    <form action="/comment" method="POST">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Title" name="title">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" rows="20" name="body"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="user">User</label>
+        <input type="text" class="form-control" id="user" placeholder="User" name="user">
+      </div>
+      <button type="submit" class="btn btn-default btn-lg btn-block">Comment</button>
+    </form>
+  </div>
+
+
+  <div class="col-md-4">
+    <ul class="article">
       {{#each news}}
-      <li>{{this.title}} <br />
-          {{this.summary}}<br />
-          {{this.author}}
-      </li>
+        <li>
+          <h3>{{this.title}}</h3>
+          <br />
+          <h4>{{this.summary}}</h4>
+          <br />
+          <h5>{{this.author}}</h5>
+          <br />
+          <p>{{this.date}}</p>
+        </li>
+        <hr />
 
-
-      </li>
+        </li>
       {{/each}}
     </ul>
   </div>
-</div>
+
+  <div class="col-md-4">
+    <!--SAVED INPUT -->
+    <form action="/delete" method="POST">
+      <div class="form-group">
+        <textarea class="form-control" rows="20"></textarea>
+      </div>
+      <button type="submit" class="btn btn-default btn-lg btn-block">Delete</button>
+    </form>
+  </div>

@@ -7,10 +7,15 @@ var newsSchema = new Schema({
   title: String,
   summary: String,
   author: String,
-  date: {
-    type: Date,
-    default: Date.now
-  },
+  comments: [{
+    user: String,
+    title: String,
+    body: String,
+    date: {
+      type: String,
+      date: { type: Date, default: Date.now }
+    }
+  }]
 });
 
 var news = mongoose.model('news', newsSchema);
