@@ -8,6 +8,7 @@ var newsSchema = new Schema({
   summary: String,
   author: String,
   comments: [{
+    newsId: String,
     user: String,
     title: String,
     body: String,

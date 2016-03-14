@@ -13,13 +13,13 @@
           <p>{{this.date}}</p>
         </button>
 
-        <button type="button" class="btn btn-default btn-lrg  btn-block" data-toggle="modal" data-target="#myModal">Comment</button>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <button type="button" class="btn btn-default btn-lrg  btn-block" data-toggle="modal" data-target="#{{this._id}}">Comment</button>
+        <div class="modal fade" id="{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Post Comment</h4>
+                <h4 class="modal-title" id="myModalLabel">Post Comment: {{this.title}}</h4>
               </div>
               <div class="modal-body">
                 <form action="/comment" method="POST">
@@ -34,7 +34,7 @@
                     <label for="user">User</label>
                     <input type="text" class="form-control" id="user" placeholder="User" name="user">
                   </div>
-                  <button type="submit" class="btn btn-default btn-lg btn-block">Comment</button>
+                  <button type="submit" class="btn btn-default btn-lg btn-block" name="newsId" value="{{this._id}}">Comment</button>
                 </form>
               </div>
               <div class="modal-footer">
@@ -57,11 +57,11 @@
     <!--SAVED INPUT -->
     <form action="/delete" method="POST">
       <ul class="list-group">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
+        {{#each news}}
+        <li class="list-group-item">
+          {{this.body}}
+          </li>
+        {{/each}}
       </ul>
     </form>
   </div>

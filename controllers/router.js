@@ -18,17 +18,36 @@ router.get('/', function(req, res) {
 //POST COMMENT
 router.post('/comment', function(req, res) {
   var body = req.body;
-console.log(body);
+
+
+  console.log(body);
   var newComments = comments({
+    newsId: body.newsId,
     title: body.title,
     body: body.body,
     user: body.user
   });
 
-  newComments.save(function(err, newPost) {
-    if (err) return console.error(err);
-    res.redirect('/');
-  });
+  news.findByIdAndUpdate(req.body.newsId, {
+  $push: {
+  comments: [newComments]
+  }
+  }, { upsert: true },
+  function (err, user) {
+    if (user){
+      newComments.save({
+        newsId: body.newsId,
+        title: body.title,
+        body: body.body,
+        user: body.user
+      });
+      res.redirect('/');
+    }else{
+      return err;
+    }
+
+  }
+  );
 });
 
 module.exports = router;

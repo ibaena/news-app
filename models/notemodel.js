@@ -4,6 +4,7 @@ Schema = mongoose.Schema;
 
 //SCHEMA
 var NoteSchema = new Schema({
+  newsId: String,
   title: String,
   body: {
     type: String
