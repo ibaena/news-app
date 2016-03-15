@@ -3,6 +3,7 @@
   <div class="col-md-4 news">
     <div class="list-group news-articles">
       <h3>News</h3>
+      <hr />
       {{#each news}}
         <form action="/comments/{{this._id}}" method="POST">
           <button type="submit" class="list-group-item {{this_id}}" name="_id" value="{{this._id}}" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="{{this.summary}}">
@@ -56,17 +57,21 @@
 
   <div class="col-md-8">
     <h3>Comments</h3>
+    <hr />
     <!--SAVED INPUT -->
     <form action="/delete" method="POST">
       <ul class="list-group">
         {{#each comments}}
           <li class="list-group-item">
-            <img src="http://placehold.it/100x100" alt="..." class="img-rounded">
+            <img src="../public/images/guy.png" alt="profile" class="img-rounded">
             <p>
               <span class="title">{{this.title}}</span>
               <br />
               <span class="summary">{{this.body}}</span></p>
-            <p class="date">By: <span class="style">{{this.user}}</span> on:<span class="style"> {{this.date}}</span></p>
+            <p class="date">By: <span class="style">{{this.user}}</span> on:<span class="style"> {{this.date}}</span><span class="right">
+              <button type="submit" href="/delete" class="right-btn" name="_id" value="{{this._id}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            </span></p>
+
           </li>
           <hr />
         {{/each}}

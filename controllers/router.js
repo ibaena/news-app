@@ -65,9 +65,23 @@ router.post('/post', function(req, res) {
       } else {
         return err;
       }
-
     }
   );
+});
+
+//DELETE COMMENT BY ID
+router.post('/delete', function(req, res) {
+  console.log(req.body);
+  comments.remove({
+    _id: req.body._id
+  }, function(err) {
+    if (!err) {
+      //message.type = 'notification!';
+      res.redirect('/');
+    } else {
+      res.redirect('/error');
+    }
+  });
 });
 
 module.exports = router;
