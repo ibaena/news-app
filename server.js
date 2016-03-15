@@ -8,6 +8,7 @@ var exphbs = require('express-handlebars'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     scraper = require('./config/scraper');
+    leadscraper = require('./config/lead-scraper');
     db = require('./config/connection');
 
 //SET HANDLEBARS ENGINE
@@ -35,4 +36,6 @@ app.listen(PORT, function() {
 
 // Routing
 var routes = require('./controllers/router');
+var lead = require('./controllers/lead');
 app.use('/', routes);
+app.use('/', lead);
