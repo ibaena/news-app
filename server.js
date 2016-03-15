@@ -36,6 +36,4 @@ app.listen(PORT, function() {
 
 // Routing
 var routes = require('./controllers/router');
-var lead = require('./controllers/lead');
 app.use('/', routes);
-app.use('/', lead);

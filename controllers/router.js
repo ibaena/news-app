@@ -1,7 +1,7 @@
 var express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
-  news = require('../models/newsmodel'),
+  lead = require('../models/leadmodel'),
   comments = require('../models/notemodel');
 
 //get routes
@@ -11,6 +11,36 @@ router.get('/', function(req, res) {
       title: 'Welcome to High Times',
       news: news
     });
+  });
+});
+
+router.get('/lead', function(req, res) {
+  mongoose.model('lead').find(function(err, news) {
+    res.render('lead', {
+      title: 'Lead News',
+      news: news
+    });
+  });
+});
+
+//GET COMMENTS PER ARTICLE
+router.post('/lead/:name', function(req, res) {
+
+  comments.find({
+    newsId: req.body._id
+  }, function(err, results) {
+    if (!err) {
+      console.log(results);
+      mongoose.model('lead').find(function(err, news) {
+        res.render('lead', {
+          title: 'Welcome to High Times',
+          news: news,
+          comments: results
+        });
+      });
+    } else {
+      throw err;
+    }
   });
 });
 
