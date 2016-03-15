@@ -11,7 +11,7 @@ router.get('/tech', function(req, res) {
       title: 'Tech News',
       news: news
     });
-  });
+  }).limit(10).sort({"_id":-1});
 });
 
 //GET COMMENTS PER ARTICLE
@@ -28,7 +28,7 @@ router.post('/tech/:name', function(req, res) {
           news: news,
           comments: results
         });
-      });
+      }).limit(10).sort({"_id":-1});
     } else {
       throw err;
     }

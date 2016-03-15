@@ -1,22 +1,23 @@
 <div class="row">
-
   <div class="col-md-4 news">
     <div class="list-group news-articles">
       <h3>{{title}}</h3>
       <hr />
       {{#each news}}
         <form action="/lead/{{this._id}}" method="POST">
-          <button type="submit" class="list-group-item {{this_id}}" name="_id" value="{{this._id}}" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="{{this.summary}}">
-            <h3>{{this.title}}</h3>
-            <h5>{{this.author}}</h5>
-            <br />
-            <p>{{this.date}}</p>
-          </button>
+          <div class="form-group">
+            <button type="submit" class="list-group-item {{this_id}}" name="_id" value="{{this._id}}" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="{{this.summary}}">
+              <h3>{{this.title}}</h3>
+              <h5>{{this.author}}</h5>
+              <br />
+              <p>{{this.date}}</p>
+            </button>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-default btn-lrg  btn-block" data-toggle="modal" data-target="#{{this._id}}">Comment</button>
+          </div>
         </form>
 
-
-
-        <button type="button" class="btn btn-default btn-lrg  btn-block" data-toggle="modal" data-target="#{{this._id}}">Comment</button>
         <div class="modal fade" id="{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">

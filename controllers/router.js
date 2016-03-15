@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
       title: 'Science News',
       news: news
     });
-  });
+  }).limit(10).sort({"_id":-1});
 });
 
 //GET COMMENTS PER ARTICLE
@@ -30,7 +30,7 @@ router.post('/comments/:name', function(req, res) {
           news: news,
           comments: results
         });
-      });
+      }).limit(10).sort({"_id":-1});
     } else {
       throw err;
     }
@@ -79,7 +79,7 @@ router.post('/delete', function(req, res) {
   }, function(err) {
     if (!err) {
       //message.type = 'notification!';
-      res.redirect('back');
+      res.redirect('/');
     } else {
       res.redirect('/error');
     }

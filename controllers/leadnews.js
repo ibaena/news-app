@@ -12,7 +12,7 @@ router.get('/lead', function(req, res) {
       title: 'Lead News',
       news: news
     });
-  });
+  }).limit(10).sort({"_id":-1});
 });
 
 //GET COMMENTS PER ARTICLE
@@ -29,7 +29,7 @@ router.post('/lead/:name', function(req, res) {
           news: news,
           comments: results
         });
-      });
+      }).limit(10).sort({"_id":-1});
     } else {
       throw err;
     }

@@ -30,7 +30,7 @@ img.img-rounded{
 }
 
 .news-articles{
-  overflow-y:scroll;
+  overflow-x:scroll;
   height:600px;
   padding-right: 10px;
 
