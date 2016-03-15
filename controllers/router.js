@@ -2,6 +2,7 @@ var express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
   lead = require('../models/leadmodel'),
+  news = require('../models/newsmodel'),
   comments = require('../models/notemodel');
 
 //get routes
