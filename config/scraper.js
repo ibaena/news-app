@@ -39,7 +39,6 @@ request('http://www.nytimes.com/section/science?module=SectionsNav&action=click&
           }
         });
       }
-      return i < 2; //LIMIT FOR TESTING PURPOSE
     });
   }
 });

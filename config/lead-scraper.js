@@ -39,7 +39,6 @@ request('http://www.nytimes.com/section/us?action=click&region=TopBar&pgtype=Sec
           }
         });
       }
-      return i < 2; //LIMIT FOR TESTING PURPOSE
     });
   }
 });

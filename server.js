@@ -1,15 +1,16 @@
 var express = require('express'),
-    app = express();
+  app = express();
 
 var PORT = process.env.PORT || 8000;
 
 //DEPENDENCIES
 var exphbs = require('express-handlebars'),
-    bodyParser = require('body-parser'),
-    morgan = require('morgan'),
-    scraper = require('./config/scraper');
-    leadscraper = require('./config/lead-scraper');
-    db = require('./config/connection');
+  bodyParser = require('body-parser'),
+  morgan = require('morgan'),
+  scraper = require('./config/scraper'),
+  leadscraper = require('./config/lead-scraper'),
+  techscraper = require('./config/tech-scraper'),
+  db = require('./config/connection');
 
 //SET HANDLEBARS ENGINE
 app.engine('handlebars', exphbs({
@@ -36,4 +37,8 @@ app.listen(PORT, function() {
 
 // Routing
 var routes = require('./controllers/router');
+var lead = require('./controllers/leadnews');
+var tech = require('./controllers/technews');
 app.use('/', routes);
+app.use('/', lead);
+app.use('/', tech);

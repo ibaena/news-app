@@ -5,7 +5,7 @@
       <h3>{{title}}</h3>
       <hr />
       {{#each news}}
-        <form action="/lead/{{this._id}}" method="POST">
+        <form action="/tech/{{this._id}}" method="POST">
           <button type="submit" class="list-group-item {{this_id}}" name="_id" value="{{this._id}}" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="{{this.summary}}">
             <h3>{{this.title}}</h3>
             <h5>{{this.author}}</h5>

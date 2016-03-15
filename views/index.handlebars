@@ -2,7 +2,7 @@
 
   <div class="col-md-4 news">
     <div class="list-group news-articles">
-      <h3>News</h3>
+      <h3>{{title}}</h3>
       <hr />
       {{#each news}}
         <form action="/comments/{{this._id}}" method="POST">

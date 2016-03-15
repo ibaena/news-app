@@ -3,45 +3,16 @@ var express = require('express'),
   mongoose = require('mongoose'),
   lead = require('../models/leadmodel'),
   news = require('../models/newsmodel'),
+  tech = require('../models/techmodel'),
   comments = require('../models/notemodel');
 
-//get routes
+//GET ROUTE
 router.get('/', function(req, res) {
   mongoose.model('news').find(function(err, news) {
     res.render('index', {
-      title: 'Welcome to High Times',
+      title: 'Science News',
       news: news
     });
-  });
-});
-
-router.get('/lead', function(req, res) {
-  mongoose.model('lead').find(function(err, news) {
-    res.render('lead', {
-      title: 'Lead News',
-      news: news
-    });
-  });
-});
-
-//GET COMMENTS PER ARTICLE
-router.post('/lead/:name', function(req, res) {
-
-  comments.find({
-    newsId: req.body._id
-  }, function(err, results) {
-    if (!err) {
-      console.log(results);
-      mongoose.model('lead').find(function(err, news) {
-        res.render('lead', {
-          title: 'Welcome to High Times',
-          news: news,
-          comments: results
-        });
-      });
-    } else {
-      throw err;
-    }
   });
 });
 
@@ -55,7 +26,7 @@ router.post('/comments/:name', function(req, res) {
       console.log(results);
       mongoose.model('news').find(function(err, news) {
         res.render('index', {
-          title: 'Welcome to High Times',
+          title: 'Science News',
           news: news,
           comments: results
         });
@@ -108,7 +79,7 @@ router.post('/delete', function(req, res) {
   }, function(err) {
     if (!err) {
       //message.type = 'notification!';
-      res.redirect('/');
+      res.redirect('back');
     } else {
       res.redirect('/error');
     }
